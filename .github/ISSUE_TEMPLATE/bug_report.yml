@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible problem with the website.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping us improve TrustCode Systems.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to...
+        2. Click...
+        3. See...
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://trustcodesystems.com/...
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device type
+      options:
+        - Desktop
+        - Mobile
+        - Tablet
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Chrome 126, Safari 17, Firefox 127
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or additional context

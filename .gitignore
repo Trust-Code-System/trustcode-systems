@@ -1,0 +1,22 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.pem
+.env
+.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+next-env.d.ts.bak
+.vercel
+*.tsbuildinfo
+*.log
+/.qodo
+/logo-verification*.png
+/trustcode-systems-logo-redesign.png
+
+# Prepared separately as the Trust-Code-System/.github repository.
+/github-organization-profile

@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Fontshare faces (Clash Display + Switzer) ---- */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=switzer@400,500,600&display=swap");
+
+:root {
+  --ink: #10151f;
+  --paper: #f7f8f6;
+  --surface: #ffffff;
+  --blueprint: #1b3fae;
+  --verified: #0e9f6e;
+  --slate: #5b6472;
+  --grid: #e3e7e2;
+
+  --font-display: "Clash Display", system-ui, sans-serif;
+  --font-body: "Switzer", system-ui, sans-serif;
+  /* --font-mono is injected by next/font (JetBrains Mono) on <html> */
+}
+
+.dark {
+  --ink: #f2f4f1;
+  --paper: #0b0f17;
+  --surface: #121826;
+  --blueprint: #6f8eff;
+  --verified: #25c08a;
+  --slate: #97a1b0;
+  --grid: #232b3a;
+}
+
+* {
+  border-color: var(--grid);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--blueprint);
+  color: #fff;
+}
+
+/* Visible keyboard focus rings */
+:focus-visible {
+  outline: 2px solid var(--blueprint);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-mono text-eyebrow uppercase text-slate;
+  }
+
+  .display-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .display-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  }
+
+  .display-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .lead {
+    @apply text-[1.0625rem] leading-[1.7] text-slate;
+  }
+
+  .card {
+    @apply rounded-card border border-grid bg-surface transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:border-blueprint;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] px-5 py-3 text-[0.95rem] font-medium transition-all duration-200 focus-visible:outline-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-blueprint text-white hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply btn border border-grid bg-surface text-ink hover:border-blueprint;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-md border border-grid bg-paper px-2 py-1 font-mono text-[0.7rem] text-slate;
+  }
+
+  .grid-bg {
+    background-image: var(--tw-bg-blueprint, none);
+    background-image: linear-gradient(
+        to right,
+        var(--grid) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.4;
+  }
+}
