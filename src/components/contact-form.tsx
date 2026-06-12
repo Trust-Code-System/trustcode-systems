@@ -8,6 +8,9 @@ import {
   budgetOptions,
 } from "@/lib/contact-schema";
 import { ArrowRight, Check } from "./icons";
+import { Select } from "./select";
+
+const budgetSelectOptions = budgetOptions.map((b) => ({ value: b, label: b }));
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -122,31 +125,24 @@ export function ContactForm() {
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="Service" name="service" error={fieldErrors.service} required>
-            <select
+            <Select
               id="service"
               name="service"
+              options={serviceOptions}
               defaultValue={presetValid ? preset : ""}
-              className={`${fieldBase} field-select`}
-            >
-              <option value="" disabled>
-                Choose a service
-              </option>
-              {serviceOptions.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
+              placeholder="Choose a service"
+              aria-invalid={Boolean(fieldErrors.service)}
+            />
           </Field>
           <Field label="Budget" name="budget" error={fieldErrors.budget}>
-            <select id="budget" name="budget" defaultValue="" className={`${fieldBase} field-select`}>
-              <option value="">Optional</option>
-              {budgetOptions.map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
-              ))}
-            </select>
+            <Select
+              id="budget"
+              name="budget"
+              options={budgetSelectOptions}
+              defaultValue=""
+              placeholder="Optional"
+              aria-invalid={Boolean(fieldErrors.budget)}
+            />
           </Field>
         </div>
 

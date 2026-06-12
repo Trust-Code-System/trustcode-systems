@@ -119,6 +119,13 @@ export function Moon(p: IconProps) {
   );
 }
 
+export function ChevronDown(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
 export function ArrowUp(p: IconProps) {
   return (
     <svg {...base} {...p}>
