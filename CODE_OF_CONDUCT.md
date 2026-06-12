@@ -12,7 +12,7 @@ and publication of private information are not acceptable.
 
 ## Enforcement
 
-Report unacceptable behavior privately to **hello@trustcodesystems.com**.
+Report unacceptable behavior privately to **hello@trustcodesystem.tech**.
 Reports will be reviewed promptly and handled as confidentially as practical.
 Project maintainers may edit, reject, or remove contributions and may
 temporarily or permanently restrict participation when necessary.

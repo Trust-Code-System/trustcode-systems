@@ -1,9 +1,9 @@
 export const site = {
   name: "TrustCode Systems Limited",
   shortName: "TrustCode Systems",
-  domain: "trustcodesystems.com",
-  url: "https://trustcodesystems.com",
-  email: "hello@trustcodesystems.com",
+  domain: "trustcodesystem.tech",
+  url: "https://trustcodesystem.tech",
+  email: "hello@trustcodesystem.tech",
   whatsapp: "https://wa.me/2348000000000",
   locations: ["Lagos, Nigeria", "London, United Kingdom"],
   thesis:

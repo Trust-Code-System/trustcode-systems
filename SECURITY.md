@@ -4,7 +4,7 @@
 
 Do not report security vulnerabilities through public GitHub issues.
 
-Email **hello@trustcodesystems.com** with:
+Email **hello@trustcodesystem.tech** with:
 
 - the affected page, endpoint, or component;
 - steps to reproduce the issue;

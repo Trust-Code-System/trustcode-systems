@@ -70,5 +70,5 @@ Per-page metadata, Organization + Person + Service JSON-LD, dynamic OG image
 
 ## Deploy
 
-Deploy to Vercel. Suggested domain: `trustcodesystems.com`. Set the env vars
-from `.env.example` in the Vercel project settings.
+Deployed on Vercel at `trustcodesystem.tech`. Set the env vars from
+`.env.example` in the Vercel project settings.
