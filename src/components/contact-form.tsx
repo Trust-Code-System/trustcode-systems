@@ -126,7 +126,7 @@ export function ContactForm() {
               id="service"
               name="service"
               defaultValue={presetValid ? preset : ""}
-              className={fieldBase}
+              className={`${fieldBase} field-select`}
             >
               <option value="" disabled>
                 Choose a service
@@ -139,7 +139,7 @@ export function ContactForm() {
             </select>
           </Field>
           <Field label="Budget" name="budget" error={fieldErrors.budget}>
-            <select id="budget" name="budget" defaultValue="" className={fieldBase}>
+            <select id="budget" name="budget" defaultValue="" className={`${fieldBase} field-select`}>
               <option value="">Optional</option>
               {budgetOptions.map((b) => (
                 <option key={b} value={b}>

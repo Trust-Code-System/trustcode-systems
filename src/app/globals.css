@@ -17,6 +17,10 @@
   --font-display: "Clash Display", system-ui, sans-serif;
   --font-body: "Switzer", system-ui, sans-serif;
   /* --font-mono is injected by next/font (JetBrains Mono) on <html> */
+
+  /* Native form controls (the open <select> popup, checkboxes, etc.)
+     follow the active theme instead of the OS default. */
+  color-scheme: light;
 }
 
 .dark {
@@ -27,6 +31,8 @@
   --verified: #25c08a;
   --slate: #97a1b0;
   --grid: #232b3a;
+
+  color-scheme: dark;
 }
 
 * {
@@ -56,11 +62,19 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  accent-color: var(--blueprint);
 }
 
 ::selection {
   background: var(--blueprint);
   color: #fff;
+}
+
+/* Themed dropdown option list (where browsers honor option colors) */
+option,
+optgroup {
+  background-color: var(--surface);
+  color: var(--ink);
 }
 
 /* Visible keyboard focus rings */
@@ -128,6 +142,23 @@ body {
 
   .badge {
     @apply inline-flex items-center rounded-md border border-grid bg-paper px-2 py-1 font-mono text-[0.7rem] text-slate;
+  }
+
+  /* Custom-styled <select> — removes the OS chevron and draws our own so the
+     control matches the rest of the design system in both themes. */
+  .field-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235b6472' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 1rem;
+  }
+
+  .dark .field-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2397a1b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   }
 
   .grid-bg {
