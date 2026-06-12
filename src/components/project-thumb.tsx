@@ -11,6 +11,9 @@ const SHOTS = new Set([
   "airtimevault",
   "wearables-atelier",
   "petrobrain",
+  "aureo",
+  "studycoach",
+  "sln-engineering",
 ]);
 
 export function ProjectThumb({
