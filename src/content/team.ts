@@ -135,7 +135,10 @@ export const team: Founder[] = [
       "MITRE ATT&CK",
       "Incident reporting",
     ],
-    links: [{ label: "LinkedIn", href: "https://linkedin.com/in/interleks" }],
+    links: [
+      { label: "GitHub", href: "https://github.com/Interleks" },
+      { label: "LinkedIn", href: "https://linkedin.com/in/interleks" },
+    ],
     pillar: {
       title: "Security by default",
       proof:
