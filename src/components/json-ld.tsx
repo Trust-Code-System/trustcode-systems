@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { site, socialLinks } from "@/content/site";
 import { team } from "@/content/team";
 import { services } from "@/content/services";
 
@@ -10,15 +10,27 @@ export function JsonLd() {
       name: site.name,
       alternateName: site.shortName,
       url: site.url,
+      logo: `${site.url}${site.logo}`,
+      image: `${site.url}${site.logo}`,
       email: site.email,
+      telephone: site.phone,
       description: site.thesis,
       slogan: "Software you can stake your business on.",
       foundingDate: "2026",
       areaServed: ["NG", "GB", "Worldwide"],
+      ...(socialLinks.length ? { sameAs: socialLinks } : {}),
       address: [
         { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
         { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
       ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: site.email,
+        telephone: site.phone,
+        areaServed: ["NG", "GB", "Worldwide"],
+        availableLanguage: "English",
+      },
       founder: team.map((f) => ({ "@id": `${site.url}/about#${f.slug}` })),
       makesOffer: services.map((s) => ({
         "@type": "Offer",

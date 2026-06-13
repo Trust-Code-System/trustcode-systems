@@ -155,6 +155,13 @@ export function LinkedIn(p: IconProps) {
     </svg>
   );
 }
+export function X(p: IconProps) {
+  return (
+    <svg {...base} {...p} fill="currentColor" stroke="none">
+      <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.66l7.73-8.84-8.16-10.66h6.83l4.71 6.23 5.47-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z" />
+    </svg>
+  );
+}
 export function Globe(p: IconProps) {
   return (
     <svg {...base} {...p}>

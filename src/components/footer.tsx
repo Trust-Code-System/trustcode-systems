@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { nav, site, stats } from "@/content/site";
+import { nav, site, social, stats } from "@/content/site";
 import { team } from "@/content/team";
 import { services } from "@/content/services";
 import { Logo } from "./logo";
-import { socialIcons, ArrowUp, ArrowRight, Mail } from "./icons";
+import { socialIcons, ArrowUp, ArrowRight, Mail, GitHub, LinkedIn, X } from "./icons";
 
 const liveCount = stats.find((s) => s.label === "live products")?.value ?? "15+";
+
+const companySocials = [
+  { label: "GitHub", href: social.github, Icon: GitHub },
+  { label: "LinkedIn", href: social.linkedin, Icon: LinkedIn },
+  { label: "X", href: social.x, Icon: X },
+].filter((s) => s.href);
 
 export function Footer() {
   return (
@@ -30,6 +36,23 @@ export function Footer() {
                 {liveCount} products live
               </span>
             </div>
+
+            {companySocials.length > 0 && (
+              <div className="mt-6 flex items-center gap-2.5">
+                {companySocials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${site.shortName} on ${label}`}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-grid text-slate transition-colors hover:border-blueprint hover:text-blueprint"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col items-start gap-3 lg:items-end">
