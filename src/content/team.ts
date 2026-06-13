@@ -185,7 +185,6 @@ export const team: Founder[] = [
       "Web3",
     ],
     links: [
-      { label: "Website", href: "https://abassibrahim.xyz" },
       { label: "GitHub", href: "https://github.com/Lingz450" },
       { label: "LinkedIn", href: "https://linkedin.com/in/abass-ibrahim-devv" },
     ],
