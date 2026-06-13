@@ -16,6 +16,7 @@ next-env.d.ts.bak
 *.log
 /.qodo
 /output
+/social-content
 /logo-verification*.png
 /trustcode-systems-logo-redesign.png
 
