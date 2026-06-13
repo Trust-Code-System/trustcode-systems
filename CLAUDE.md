@@ -63,9 +63,11 @@ is context for any AI/dev session so the basics never need re-asking.
   configured). Rely on `pnpm typecheck` + `pnpm build`.
 
 ## Repo & deployment
-- **GitHub:** `Trust-Code-System/TrustCode-System` (remote `origin`). A second
-  remote `tcs` points at `Trust-Code-System/TrustCode-System` — `origin` is the
-  one in use.
+- **GitHub:** `Trust-Code-System/trustcode-system-website` (remote `origin`;
+  formerly named `trustcode-systems`) — **this is the repo Vercel deploys
+  from**. A separate repo `Trust-Code-System/TrustCode-System` also exists (the
+  `tcs` remote) but is **not** the deploy source; don't push there expecting a
+  deploy.
 - **Default/production branch:** `main`. Vercel auto-deploys on push to `main`.
 - `main` has branch protection (PR + "validate" status check required) but the
   owner pushes directly with bypass. Commits made in this repo are co-authored
