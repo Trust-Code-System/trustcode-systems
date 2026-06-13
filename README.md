@@ -11,7 +11,7 @@ Router), TypeScript, Tailwind CSS, Framer Motion.
 - **Framer Motion** — restrained scroll-reveals only
 - **Zod** — shared client/server form validation
 - **Resend** — contact email delivery (optional; gated by env)
-- Fonts: Clash Display + Switzer (Fontshare), JetBrains Mono (`next/font`)
+- Fonts: Source Serif 4 (Google, headings) + Switzer (Fontshare, body), JetBrains Mono (`next/font`)
 
 ## Getting started
 
