@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { PageHero } from "@/components/page-hero";
 import { Section } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight, WhatsApp } from "@/components/icons";
 import { site } from "@/content/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -33,21 +33,27 @@ export default function ContactPage() {
           <aside className="lg:col-span-5">
             <div className="grid gap-5">
               <div className="card p-7">
-                <p className="eyebrow mb-3">/ email us</p>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-[1.05rem] font-medium text-blueprint hover:underline"
-                >
-                  {site.email}
-                </a>
-                <p className="mt-4 eyebrow mb-3">/ whatsapp</p>
+                <p className="eyebrow mb-3">/ chat with us</p>
                 <a
                   href={site.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[1.05rem] font-medium text-ink hover:text-blueprint"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#25D366] px-4 py-3 text-[0.95rem] font-semibold text-white transition-colors hover:bg-[#1da851]"
                 >
-                  WhatsApp Business
+                  <WhatsApp className="h-5 w-5" />
+                  Chat on WhatsApp
+                </a>
+                <p className="mt-3 text-[0.82rem] text-slate">
+                  Fastest way to reach us — we usually reply in minutes during
+                  business hours.
+                </p>
+
+                <p className="mt-5 eyebrow mb-2">/ email us</p>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center gap-1.5 text-[1.05rem] font-medium text-blueprint hover:underline"
+                >
+                  {site.email}
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
