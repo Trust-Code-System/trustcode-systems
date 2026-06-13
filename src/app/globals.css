@@ -128,6 +128,22 @@ html {
   border-radius: 2px;
 }
 
+/* Gentle background-grid drift (one 48px cell per loop = seamless) */
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 48px 48px, 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-bg {
+    animation: none;
+  }
+}
+
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-container px-5 sm:px-8;
@@ -143,6 +159,39 @@ html {
     line-height: 1.02;
     letter-spacing: -0.025em;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  /* Hero headline: gradient fill + subtle 3D extrude/depth */
+  .hero-title {
+    background-image: linear-gradient(
+      150deg,
+      var(--ink) 0%,
+      var(--ink) 35%,
+      var(--blueprint) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow:
+      0 1px 0 rgba(16, 21, 31, 0.1),
+      1px 2px 0 rgba(16, 21, 31, 0.08),
+      2px 4px 6px rgba(27, 63, 174, 0.18),
+      0 12px 30px rgba(27, 63, 174, 0.12);
+  }
+
+  .dark .hero-title {
+    background-image: linear-gradient(
+      150deg,
+      var(--ink) 0%,
+      var(--ink) 30%,
+      var(--blueprint) 105%
+    );
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.35),
+      1px 2px 0 rgba(0, 0, 0, 0.28),
+      2px 4px 10px rgba(111, 142, 255, 0.3),
+      0 14px 38px rgba(111, 142, 255, 0.18);
   }
 
   .display-h2 {
@@ -215,5 +264,7 @@ html {
       linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
     background-size: 48px 48px;
     opacity: 0.4;
+    /* Gentle, seamless diagonal drift (48px loop = one grid cell) */
+    animation: grid-drift 24s linear infinite;
   }
 }

@@ -29,7 +29,7 @@ export default function HomePage() {
               <p className="eyebrow">/ TrustCode System Limited</p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="display-h1 mt-5">
+              <h1 className="display-h1 hero-title mt-5">
                 Software you can stake your business on.
               </h1>
             </Reveal>
