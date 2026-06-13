@@ -4,7 +4,8 @@ export const site = {
   domain: "trustcodesystem.tech",
   url: "https://trustcodesystem.tech",
   email: "hello@trustcodesystem.tech",
-  whatsapp: "https://wa.me/2349134062773",
+  whatsapp:
+    "https://wa.me/2349134062773?text=Hi%20TrustCode%20Systems%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   locations: ["Lagos, Nigeria", "London, United Kingdom"],
   thesis:
     "TrustCode Systems builds software you can stake your business on. Full-stack product engineering, cloud infrastructure, AI integration, and security — delivered by a team that has shipped 15+ live products across fintech, edtech, e-commerce, HR tech, and Web3.",
