@@ -6,11 +6,20 @@ import {
   contactSchema,
   serviceOptions,
   budgetOptions,
+  siteTypeOptions,
+  goalOptions,
+  startingPointOptions,
+  designVibeOptions,
+  featureOptions,
+  timelineOptions,
 } from "@/lib/contact-schema";
 import { ArrowRight, Check } from "./icons";
 import { Select } from "./select";
+import { cn } from "@/lib/utils";
 
 const budgetSelectOptions = budgetOptions.map((b) => ({ value: b, label: b }));
+
+const OTHER = "Other";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -26,6 +35,22 @@ export function ContactForm() {
   const [formError, setFormError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
+  // Project-brief state
+  const [siteType, setSiteType] = useState("");
+  const [goal, setGoal] = useState("");
+  const [startingPoint, setStartingPoint] = useState("");
+  const [designVibe, setDesignVibe] = useState("");
+  const [timeline, setTimeline] = useState("");
+  const [features, setFeatures] = useState<string[]>([]);
+  // Free-text for "Other" selections
+  const [siteTypeOther, setSiteTypeOther] = useState("");
+  const [goalOther, setGoalOther] = useState("");
+  const [featureOther, setFeatureOther] = useState("");
+
+  function resolve(selected: string, other: string) {
+    return selected === OTHER ? other.trim() : selected;
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
@@ -34,7 +59,30 @@ export function ContactForm() {
 
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
+
+    const resolvedFeatures = [
+      ...features.filter((f) => f !== OTHER),
+      ...(features.includes(OTHER) && featureOther.trim()
+        ? [featureOther.trim()]
+        : []),
+    ];
+
+    const payload = {
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      company: String(fd.get("company") ?? ""),
+      service: String(fd.get("service") ?? ""),
+      budget: String(fd.get("budget") ?? ""),
+      siteType: resolve(siteType, siteTypeOther),
+      goal: resolve(goal, goalOther),
+      startingPoint,
+      designVibe,
+      features: resolvedFeatures,
+      timeline,
+      inspiration: String(fd.get("inspiration") ?? ""),
+      message: String(fd.get("message") ?? ""),
+      website: String(fd.get("website") ?? ""),
+    };
 
     const parsed = contactSchema.safeParse(payload);
     if (!parsed.success) {
@@ -72,6 +120,15 @@ export function ContactForm() {
       }
       setStatus("success");
       form.reset();
+      setSiteType("");
+      setGoal("");
+      setStartingPoint("");
+      setDesignVibe("");
+      setTimeline("");
+      setFeatures([]);
+      setSiteTypeOther("");
+      setGoalOther("");
+      setFeatureOther("");
     } catch {
       setStatus("error");
       setFormError("Network error. Please try again or email us directly.");
@@ -84,11 +141,10 @@ export function ContactForm() {
         <span className="flex h-12 w-12 items-center justify-center rounded-full border border-verified text-verified">
           <Check className="h-6 w-6" />
         </span>
-        <h2 className="display-h3 text-[1.4rem]">Message sent</h2>
+        <h2 className="display-h3 text-[1.4rem]">Brief received</h2>
         <p className="lead">
-          Message sent — expect a reply within 24 hours. We&apos;ll come back
-          with next steps and, if it&apos;s a build, a written proposal within
-          72 hours.
+          Thanks — that gives us a clear picture. Expect a reply within 24 hours,
+          and if it&apos;s a build, a written proposal within 72 hours.
         </p>
         <button
           type="button"
@@ -146,13 +202,84 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <Field label="Message" name="message" error={fieldErrors.message} required>
+        {/* ---- Project brief ---- */}
+        <div className="mt-2 border-t border-grid pt-6">
+          <p className="eyebrow">/ project brief</p>
+          <p className="mt-2 text-[0.9rem] text-slate">
+            Optional, but the more you share the faster we can scope it. Pick what
+            fits — or choose &ldquo;Other&rdquo; to tell us in your own words.
+          </p>
+        </div>
+
+        <ChipGroup
+          label="What kind of site or product?"
+          options={siteTypeOptions}
+          value={siteType}
+          onChange={setSiteType}
+          otherValue={siteTypeOther}
+          onOtherChange={setSiteTypeOther}
+        />
+
+        <ChipGroup
+          label="What's the main goal?"
+          options={goalOptions}
+          value={goal}
+          onChange={setGoal}
+          otherValue={goalOther}
+          onOtherChange={setGoalOther}
+        />
+
+        <ChipGroup
+          label="Where are you starting from?"
+          options={startingPointOptions}
+          value={startingPoint}
+          onChange={setStartingPoint}
+        />
+
+        <ChipGroup
+          label="Design direction"
+          options={designVibeOptions}
+          value={designVibe}
+          onChange={setDesignVibe}
+        />
+
+        <ChipMultiGroup
+          label="Features you'll likely need"
+          options={featureOptions}
+          values={features}
+          onToggle={(v) =>
+            setFeatures((cur) =>
+              cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v]
+            )
+          }
+          otherValue={featureOther}
+          onOtherChange={setFeatureOther}
+        />
+
+        <ChipGroup
+          label="Timeline"
+          options={timelineOptions}
+          value={timeline}
+          onChange={setTimeline}
+        />
+
+        <Field label="Sites or brands you like (inspiration)" name="inspiration" error={fieldErrors.inspiration}>
+          <input
+            id="inspiration"
+            name="inspiration"
+            type="text"
+            className={fieldBase}
+            placeholder="Optional — links or names of sites you admire"
+          />
+        </Field>
+
+        <Field label="Anything else / details" name="message" error={fieldErrors.message} required>
           <textarea
             id="message"
             name="message"
             rows={5}
             className={fieldBase}
-            placeholder="What are you building? Where are you now, and what does done look like?"
+            placeholder="Tell us what you have in mind — pages, must-haves, anything specific. Where are you now, and what does done look like?"
           />
         </Field>
 
@@ -167,7 +294,7 @@ export function ContactForm() {
           disabled={status === "submitting"}
           className="btn-primary w-full justify-center disabled:opacity-60 sm:w-auto"
         >
-          {status === "submitting" ? "Sending…" : "Send message"}
+          {status === "submitting" ? "Sending…" : "Send brief"}
           {status !== "submitting" && <ArrowRight className="h-4 w-4" />}
         </button>
         <p className="text-[0.78rem] text-slate">
@@ -176,6 +303,120 @@ export function ContactForm() {
         </p>
       </div>
     </form>
+  );
+}
+
+function chipClass(active: boolean) {
+  return cn(
+    "rounded-full border px-3.5 py-1.5 text-[0.85rem] transition-colors",
+    active
+      ? "border-blueprint bg-blueprint text-white"
+      : "border-grid bg-paper text-ink hover:border-blueprint"
+  );
+}
+
+function ChipGroup({
+  label,
+  options,
+  value,
+  onChange,
+  otherValue,
+  onOtherChange,
+}: {
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (v: string) => void;
+  otherValue?: string;
+  onOtherChange?: (v: string) => void;
+}) {
+  const hasOther = Boolean(onOtherChange);
+  // value holds either an option or the OTHER sentinel; resolved at submit.
+  const list = hasOther ? [...options, OTHER] : options;
+
+  return (
+    <fieldset>
+      <legend className="mb-2 block font-mono text-[0.72rem] uppercase tracking-wider text-slate">
+        {label}
+      </legend>
+      <div className="flex flex-wrap gap-2">
+        {list.map((opt) => {
+          const active = value === opt;
+          return (
+            <button
+              key={opt}
+              type="button"
+              aria-pressed={active ? "true" : "false"}
+              onClick={() => onChange(active ? "" : opt)}
+              className={chipClass(active)}
+            >
+              {opt}
+            </button>
+          );
+        })}
+      </div>
+      {hasOther && value === OTHER && (
+        <input
+          type="text"
+          value={otherValue}
+          onChange={(e) => onOtherChange?.(e.target.value)}
+          className={cn(fieldBase, "mt-3")}
+          placeholder="Tell us in your own words…"
+          autoFocus
+        />
+      )}
+    </fieldset>
+  );
+}
+
+function ChipMultiGroup({
+  label,
+  options,
+  values,
+  onToggle,
+  otherValue,
+  onOtherChange,
+}: {
+  label: string;
+  options: readonly string[];
+  values: string[];
+  onToggle: (v: string) => void;
+  otherValue: string;
+  onOtherChange: (v: string) => void;
+}) {
+  const list = [...options, OTHER];
+  return (
+    <fieldset>
+      <legend className="mb-2 block font-mono text-[0.72rem] uppercase tracking-wider text-slate">
+        {label}
+      </legend>
+      <div className="flex flex-wrap gap-2">
+        {list.map((opt) => {
+          const active = values.includes(opt);
+          return (
+            <button
+              key={opt}
+              type="button"
+              aria-pressed={active ? "true" : "false"}
+              onClick={() => onToggle(opt)}
+              className={chipClass(active)}
+            >
+              {opt}
+            </button>
+          );
+        })}
+      </div>
+      {values.includes(OTHER) && (
+        <input
+          type="text"
+          value={otherValue}
+          onChange={(e) => onOtherChange(e.target.value)}
+          className={cn(fieldBase, "mt-3")}
+          placeholder="Other features…"
+          autoFocus
+        />
+      )}
+    </fieldset>
   );
 }
 

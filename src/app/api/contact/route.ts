@@ -66,13 +66,28 @@ export async function POST(req: Request) {
   }
 
   const subject = `New project inquiry — ${serviceLabel(data.service)}`;
+
+  const brief = [
+    data.siteType ? `Type of site: ${data.siteType}` : null,
+    data.goal ? `Main goal: ${data.goal}` : null,
+    data.startingPoint ? `Starting from: ${data.startingPoint}` : null,
+    data.designVibe ? `Design direction: ${data.designVibe}` : null,
+    data.features && data.features.length
+      ? `Features: ${data.features.join(", ")}`
+      : null,
+    data.timeline ? `Timeline: ${data.timeline}` : null,
+    data.inspiration ? `Inspiration: ${data.inspiration}` : null,
+  ].filter(Boolean);
+
   const text = [
     `Name: ${data.name}`,
     `Email: ${data.email}`,
     data.company ? `Company: ${data.company}` : null,
     `Service: ${serviceLabel(data.service)}`,
     data.budget ? `Budget: ${data.budget}` : null,
+    ...(brief.length ? ["", "— Project brief —", ...brief] : []),
     "",
+    "— Details —",
     data.message,
   ]
     .filter(Boolean)
