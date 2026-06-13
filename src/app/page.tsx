@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="container-x relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
           <div>
             <Reveal>
-              <p className="eyebrow">/ TrustCode Systems Limited</p>
+              <p className="eyebrow">/ TrustCode System Limited</p>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="display-h1 mt-5">
@@ -35,7 +35,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="lead mt-6 max-w-xl">
-                TrustCode Systems is a four-engineer team shipping web platforms,
+                TrustCode System is a four-engineer team shipping web platforms,
                 cloud systems, AI features, and security — 15+ live products
                 across fintech, edtech, e-commerce and beyond.
               </p>

@@ -1,6 +1,6 @@
-# TrustCode Systems — Project Guide
+# TrustCode System — Project Guide
 
-Marketing website for **TrustCode Systems Limited**, a software studio. This file
+Marketing website for **TrustCode System Limited**, a software studio. This file
 is context for any AI/dev session so the basics never need re-asking.
 
 > Operational/business details that don't belong in a public repo (email
@@ -13,7 +13,7 @@ is context for any AI/dev session so the basics never need re-asking.
 - Live at **https://trustcodesystem.tech**, deployed on **Vercel**.
 
 ## The company
-- **Name:** TrustCode Systems Limited (short: "TrustCode Systems")
+- **Name:** TrustCode System Limited (short: "TrustCode System")
 - **Tagline:** "Software you can stake your business on."
 - **What they do:** full-stack product engineering, cloud/DevOps, AI integration,
   cybersecurity/SOC, IT support, training. 15+ live products across fintech,

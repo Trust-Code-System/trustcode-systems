@@ -11,7 +11,7 @@ export function Logo({ className }: { className?: string }) {
     >
       <Image
         src="/trustcode-systems-logo.png"
-        alt="TrustCode Systems"
+        alt="TrustCode System"
         width={1640}
         height={430}
         priority

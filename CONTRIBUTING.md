@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for contributing to the TrustCode Systems website.
+Thank you for contributing to the TrustCode System website.
 
 ## Development
 

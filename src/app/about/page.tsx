@@ -12,7 +12,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "About & Team",
   description:
-    "Four engineers, two countries, one standard: production-ready. Meet the founders of TrustCode Systems and the values we build on.",
+    "Four engineers, two countries, one standard: production-ready. Meet the founders of TrustCode System and the values we build on.",
   path: "/about",
 });
 

@@ -5,7 +5,7 @@ labels: ["bug"]
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping us improve TrustCode Systems.
+      value: Thanks for helping us improve TrustCode System.
   - type: textarea
     id: description
     attributes:

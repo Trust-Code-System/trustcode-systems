@@ -1,6 +1,6 @@
-# TrustCode Systems — marketing website
+# TrustCode System — marketing website
 
-Production-grade marketing site for TrustCode Systems Limited. Next.js 14 (App
+Production-grade marketing site for TrustCode System Limited. Next.js 14 (App
 Router), TypeScript, Tailwind CSS, Framer Motion.
 
 > Software you can stake your business on.

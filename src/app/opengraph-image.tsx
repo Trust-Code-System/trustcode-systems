@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "TrustCode Systems — Software you can stake your business on";
+export const alt = "TrustCode System — Software you can stake your business on";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

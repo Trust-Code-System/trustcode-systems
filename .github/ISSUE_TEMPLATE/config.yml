@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: Project and business enquiries
     url: https://trustcodesystem.tech/contact
-    about: Start a project or contact the TrustCode Systems team.
+    about: Start a project or contact the TrustCode System team.
   - name: Security vulnerability
     url: mailto:hello@trustcodesystem.tech
     about: Please report vulnerabilities privately rather than opening a public issue.

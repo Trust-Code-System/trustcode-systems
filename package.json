@@ -2,7 +2,7 @@
   "name": "trustcode-systems",
   "version": "1.0.0",
   "private": true,
-  "description": "Marketing website for TrustCode Systems Limited",
+  "description": "Marketing website for TrustCode System Limited",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
