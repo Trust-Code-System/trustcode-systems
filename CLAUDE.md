@@ -63,7 +63,7 @@ is context for any AI/dev session so the basics never need re-asking.
   configured). Rely on `pnpm typecheck` + `pnpm build`.
 
 ## Repo & deployment
-- **GitHub:** `Trust-Code-System/trustcode-systems` (remote `origin`). A second
+- **GitHub:** `Trust-Code-System/TrustCode-System` (remote `origin`). A second
   remote `tcs` points at `Trust-Code-System/TrustCode-System` — `origin` is the
   one in use.
 - **Default/production branch:** `main`. Vercel auto-deploys on push to `main`.
